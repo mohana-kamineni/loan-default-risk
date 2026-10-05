@@ -227,6 +227,8 @@ Evaluating borrowers whose balances remained strictly non-negative ($\min(\text{
 
 ## 14. Reproducibility Guide
 
+> **Reproducibility Note**: The analysis is reproducible with the provided artifacts and documented dataset acquisition pipeline. Processed modeling cohorts, feature matrices, and cross-validation partition assignments are tracked in `data/processed/` so that all experiments, paired ablations, and robustness evaluations can be run out of the box without requiring external database downloads. Instructions for rebuilding the feature store from the raw PKDD'99 database are also provided below.
+
 ### Prerequisites
 * Python 3.10+
 * Virtual environment (`venv` or `conda`)
