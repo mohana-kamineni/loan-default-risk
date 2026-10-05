@@ -1,0 +1,31 @@
+# Byte-compiled / optimized files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Pytest cache
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+ENV/
+
+# Raw dataset files (external benchmark files)
+berka-dataset/
+*.asc
+
+# OS & Editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Execution logs
+*.log
