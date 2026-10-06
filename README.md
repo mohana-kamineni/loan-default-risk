@@ -71,16 +71,19 @@ This study forms part of an applied machine learning portfolio spanning industri
 
 ```mermaid
 flowchart TD
-    Raw["Raw PKDD'99 Berka Data<br/>682 Loans (1993 - 1998)"]
-    
-    Raw --> SplitStatus{"Loan Contract Status"}
-    SplitStatus -->|Status A (203 Repaid)<br/>Status B (31 Default)| Primary["Primary Completed Cohort (N=234)<br/>Ground truth completely observed<br/>0 Right-Truncated Loans<br/>Default Rate: 13.25%"]
-    
-    SplitStatus -->|Status C (403 Running / Censored)<br/>Status D (45 Active Debt)| ExpandedAll["All Loans (N=682)"]
-    
-    ExpandedAll --> TruncCheck{"Right-Truncation Audit<br/>(loan_date + 90d > 1998-12-31)"}
-    TruncCheck -->|26 Loans Truncated| Quarantined["Quarantined (N=26)"]
-    TruncCheck -->|656 Complete Windows| ExpandedCohort["Secondary Sensitivity Cohort (N=656)<br/>581 Good / 75 Default<br/>Default Rate: 11.43%"]
+    Raw["Raw PKDD'99 Berka Data<br/>682 Loans (1993-1998)"]
+    SplitStatus["Loan Contract Status"]
+
+    Raw --> SplitStatus
+
+    SplitStatus --> Primary["Primary Completed Cohort<br/>N=234<br/>Status A: 203 Repaid<br/>Status B: 31 Default"]
+
+    SplitStatus --> ExpandedAll["All Loans<br/>N=682<br/>Status A: 203 Repaid<br/>Status B: 31 Default<br/>Status C: 403 Running / Censored<br/>Status D: 45 Active Debt"]
+
+    ExpandedAll --> TruncCheck["Right-Truncation Audit<br/>loan_date + 90d > 1998-12-31"]
+
+    TruncCheck --> Quarantined["26 Loans Truncated<br/>Quarantined"]
+    TruncCheck --> ExpandedCohort["Secondary Sensitivity Cohort<br/>N=656<br/>581 Good / 75 Default"]
 ```
 
 ### 6.1 Primary Completed Cohort ($N=234$) — Headline Ground Truth
