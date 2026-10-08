@@ -106,9 +106,9 @@ To maintain strict empirical validity, we implemented four architectural control
 1. **Strict Temporal Demarcation:**
    - Post-disbursement features are restricted strictly to:
 
-     $$
-     T_{\text{loan}} \le \text{trans\_date} \le T_{\text{loan}} + W
-     $$
+$$
+T_{\text{loan}} \le \text{trans\_date} \le T_{\text{loan}} + W
+$$
 
    - **Day 0 Rule:** Transactions on the origination date (`trans_date == loan_date`) are included, as loan disbursement credits and initial drawdowns occur on Day 0.
 
