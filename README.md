@@ -104,15 +104,11 @@ flowchart TD
 To maintain strict empirical validity, we implemented four architectural controls:
 
 1. **Strict Temporal Demarcation:**
-   - Post-disbursement features are restricted strictly to:
-
-$$
-T_{\text{loan}} \le \text{trans\_date} \le T_{\text{loan}} + W
-$$
+   - Post-disbursement features are restricted strictly to $T_{\text{loan}} \le \text{trans\_date} \le T_{\text{loan}} + W$.
 
    - **Day 0 Rule:** Transactions on the origination date (`trans_date == loan_date`) are included, as loan disbursement credits and initial drawdowns occur on Day 0.
 
-   - **Pre-Loan Isolation:** Transactions prior to disbursement (`trans_date < T_{\text{loan}}`) are forbidden from windowed behavioral aggregations. They enter the model exclusively through two static pre-loan control features (`feat_had_pre_loan_overdraft`, `feat_pre_loan_tx_count`).
+   - **Pre-Loan Isolation:** Transactions prior to disbursement (`trans_date < loan_date`) are forbidden from windowed behavioral aggregations. They enter the model exclusively through two static pre-loan control features (`feat_had_pre_loan_overdraft`, `feat_pre_loan_tx_count`).
 
 2. **Auditing Target Leakage & Censoring Shortcuts:**
    - *Full-Lifetime Balance Leakage:* Full-lifetime minimum balance perfectly separates the observed good and bad loan-status labels in this dataset (100% separation), making it a target-leakage shortcut for early prediction rather than a prospective risk signal.
